@@ -40,6 +40,8 @@ class CategoryDb implements CategoryDbFunctions {
     final _allCategories = await getCategories();
     incomeCategoryListNotifier.value.clear();
     expenseCategoryListNotifier.value.clear();
+    incomeCategoryListNotifier.notifyListeners();
+    expenseCategoryListNotifier.notifyListeners();
     Future.forEach(_allCategories, (CategoryModel category) {
       if (category.type == CategoryType.income) {
         incomeCategoryListNotifier.value.add(category);
